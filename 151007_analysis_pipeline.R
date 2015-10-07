@@ -53,7 +53,6 @@ permute_binary<-function(gwaadata,trait,times=1000,plot=T){
   y<-gwaadata@phdata[,trait]
   y[which(y>0)]<-1
   qt<-try(emp.qtscore(y,gwaadata,trait.type = "binomial",times = times))
-  return(qti)
   if(plot==T){
     png(paste(trait,"permutation.png",sep=""),width = 1024,height = 768)
     plot(qt) 
@@ -87,9 +86,7 @@ permute_normal<-function(gwaadata,trait,times=1000,plot=F){
   id<-which(y>0)
   idsubset<-gwaadata@gtdata@idnames[id]
   zscore<-function(x) qnorm((rank(x, na.last = "keep") - 0.5)/sum(!is.na(x)))
-  qt<-emp.qtscore(zscore(ph[id]),gwaadata,trait.type = "guess",idsubset = idsubset,times = times)
-  return(qt)
-  
+  qt<-emp.qtscore(zscore(y[id]),gwaadata,trait.type = "guess",idsubset = idsubset,times = times)  
   if(plot==T){
     png(paste(trait,"permutation.png",sep=""),width = 1024,height = 768)
     plot(qt) 
