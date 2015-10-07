@@ -53,7 +53,7 @@ permute_binary<-function(gwaadata,trait,times=1000,plot=T){
   y<-gwaadata@phdata[,trait]
   y[which(y>0)]<-1
   qt<-try(emp.qtscore(y,gwaadata,trait.type = "binomial",times = times))
-  return(qti)
+  return(qt)
   if(plot==T){
     png(paste(trait,"permutation.png",sep=""),width = 1024,height = 768)
     plot(qt) 
