@@ -53,12 +53,10 @@ permute_binary<-function(gwaadata,trait,times=1000,plot=T){
   y<-gwaadata@phdata[,trait]
   y[which(y>0)]<-1
   qt<-try(emp.qtscore(y,gwaadata,trait.type = "binomial",times = times))
-<<<<<<< HEAD
-=======
+
   return(qt)
->>>>>>> e5b93040b420354ae481ddce7de7191fca928b2e
   if(plot==T){
-    png(paste(trait,"permutation.png",sep=""),width = 1024,height = 768)
+    png(paste(trait,"permutation_loss.png",sep=""),width = 1024,height = 768)
     plot(qt) 
     abline(h=-log10(0.05),lty="dashed",col="red")
     dev.off()
@@ -90,14 +88,11 @@ permute_normal<-function(gwaadata,trait,times=1000,plot=F){
   id<-which(y>0)
   idsubset<-gwaadata@gtdata@idnames[id]
   zscore<-function(x) qnorm((rank(x, na.last = "keep") - 0.5)/sum(!is.na(x)))
-<<<<<<< HEAD
   qt<-emp.qtscore(zscore(y[id]),gwaadata,trait.type = "guess",idsubset = idsubset,times = times)  
-=======
   qt<-emp.qtscore(zscore(y[id]),gwaadata,trait.type = "guess",idsubset = idsubset,times = times)
 
->>>>>>> e5b93040b420354ae481ddce7de7191fca928b2e
   if(plot==T){
-    png(paste(trait,"permutation.png",sep=""),width = 1024,height = 768)
+    png(paste(trait,"permutation_normal.png",sep=""),width = 1024,height = 768)
     plot(qt) 
     abline(h=-log10(0.05),lty="dashed",col="red")
     dev.off()
