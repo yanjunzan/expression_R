@@ -36,7 +36,7 @@ scan_binary<-function(gwaadata,trait,plot=F){
   qt<-qtscore(y,gwaadata,trait.type="binomial")
   
   if(plot==T){
-    png(paste(trait,"_scanloss.png",sep=""),width = 1024,height = 768)
+    png(paste(trait,"_scan_loss.png",sep=""),width = 1024,height = 768)
     plot(qt,df="Pc1df") 
     thres<--log10(0.05/gwaadata@gtdata@nsnps)
     abline(h=thres,lty="dashed",col="red")
@@ -75,7 +75,7 @@ scan_normal<-function(gwaadata,trait,plot=F){
   qt<-try(qtscore(zscore(y[id]),gwaadata,idsubset = idsubset)
 
   if(plot==T){
-    png(paste(trait,"_scanloss.png",sep=""),width = 1024,height = 768)
+    png(paste(trait,"_scan_normal.png",sep=""),width = 1024,height = 768)
     plot(qt,df="Pc1df") 
     thres<--log10(0.05/gwaadata@gtdata@nsnps)
     abline(h=thres,lty="dashed",col="red")
