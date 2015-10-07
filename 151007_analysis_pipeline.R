@@ -70,8 +70,7 @@ scan_normal<-function(gwaadata,trait,plot=F){
   y<-gwaadata@phdata[,trait]
   id<-which(y>0)
   idsubset<-gwaadata@gtdata@idnames[id]
-  qt<-try(qtscore(zscore(y[id]),gwaadata,idsubset = idsubset)
-
+  qt<-qtscore(zscore(y[id]),gwaadata,idsubset = idsubset)
   if(plot==T){
     png(paste(trait,"_scan_normal.png",sep=""),width = 1024,height = 768)
     plot(qt,df="Pc1df") 
