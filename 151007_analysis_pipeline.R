@@ -67,6 +67,9 @@ permute_binary<-function(gwaadata,trait,times=1000,plot=T){
 ##4. function to do genome wide scan and make mahattan plot for the second modifier allele
 
 scan_normal<-function(gwaadata,trait,plot=F){
+  if(!require(GenABEL)){
+    stop(" GenABEL has to be installed and loaded !") 
+  }
   y<-gwaadata@phdata[,trait]
   id<-which(y>0)
   idsubset<-gwaadata@gtdata@idnames[id]
@@ -83,6 +86,9 @@ scan_normal<-function(gwaadata,trait,plot=F){
 #5.Function to do  permutation on the second modifier allele, 
 #the return object is a gwaa.scan data type contain p-value adjusted for genome wide test
 permute_normal<-function(gwaadata,trait,times=1000,plot=F){
+  if(!require(GenABEL)){
+    stop(" GenABEL has to be installed and loaded !") 
+  }
   y<-gwaadata@phdata[,trait]
   id<-which(y>0)
   idsubset<-gwaadata@gtdata@idnames[id]
